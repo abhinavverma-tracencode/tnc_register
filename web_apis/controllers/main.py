@@ -215,23 +215,27 @@ class WebTokenAccess(http.Controller):
                 content_type='application/json;charset=utf-8', status=200) 
         else:
             abort(LOGIN_INVALID, status=401) 
-        
-class Registration(http.Controller):
 
-    @http.route('/create_user_webform',auth="public", type='http' ,website=True)
-    def create_webform(self, **kw):
-        return http.request.render('web_apis.Create_User',{})
-        
-        
-    @http.route('/Create/User/Register',auth="public", type='http' )
-    def create_user_register(self, **kw):
-        vals = {
-            'Addrese':kw.get('Addrese'),
-            'email_id':kw.get('email_id'),
-            'password' :kw.get('password'),
-            'mobile_number':kw.get('mobile_number'),
 
-        }
-        request.env['registration.api'].sudo().create(vals)
+class UserController(http.Controller):
+
+    
+    @http.route('/api/register', type='http', auth='public', csrf=False, methods=['POST'])
+    def register_user(self, **kwargs):
+        # Extract required data from request
+        email = kwargs.get('email')
+        password = kwargs.get('password')
+        name = kwargs.get('name')
         
-        #return request.render('web_apis.patient_thanks',{})
+        # Create new user record
+        user = request.env['res.users'].sudo().create({
+            'name': name,
+            'login': email,
+            'email': email,
+            'password': password,
+            
+
+        })
+        response_data = {'success': True, 'message': 'User registered successfully!'}
+        return json.dumps(response_data)
+
