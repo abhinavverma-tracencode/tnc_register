@@ -5,7 +5,7 @@
     'summary': 'Website  & Apis Availability  Website and Product',
     'description': """
     This module contains all the common features of Website  & Apis Availability""",
-    'depends': ['website'],
+    'depends': ['website','http_routing','mail','web'],
     'data': [
         'security/ir.model.access.csv',
         'views/web_view.xml',

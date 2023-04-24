@@ -19,7 +19,6 @@ except ImportError:
 
 class WebApis(models.Model):
 	_name = 'web_apis.token'
-    
 	token = fields.Char(string="Acess Token",required=True)
 	number = fields.Integer(string="Number",required=True)
 	res_user = fields.Many2one('res.users',string="User",required=True)
@@ -43,16 +42,5 @@ class WebApis(models.Model):
 		timestamp = int(time.time() + lifetime)
 		return self.create({'token': token, 'number': timestamp, 'res_user': uid})
 
-
-
-
-class ResgistrationAois(models.Model):
-	_name = 'registration.api'
-
-
-	email_id = fields.Char(string="Email")
-	password = fields.Char(string="Password")
-	mobile_number = fields.Char(string="Mobile Number")
-	Addrese = fields.Char(string="Addrese")
 
 

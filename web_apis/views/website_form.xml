@@ -1,42 +1,78 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <template id="Create_User" name= "create User Registration">
-            <t t-call="website.layout">
-                <div id="wrap">
-                    <div class="oe_structure">
-                        <div class="container">
-                            <form role ="form"  action= "/Create/User/Register" method= "Post">
-                                <input type ="hidden" name= "csrf_token" t-att-value = "request.csrf_token()"/>
-                                <div class ="form-group">
-                                    <label for = "email_id"  class= "control-label"> Email</label>
-                                    <input type="email" name= "email_id" t-att-value = "email_id" id ="email_id"
-                                    class = "form-control" required="required"/>
-                                </div>
-                                <div class ="form-group">
-                                    <label for = "mobile_number"  class= "control-label"> Mobile Number</label>
-                                    <input type="text" name= "mobile_number" t-att-value = "mobile_number" id ="mobile_number"
-                                    class = "form-control" required="required"/>
-                                </div>
-                                <div class ="form-group">
-                                    <label for = "Addrese"  class= "control-label"> Addrese</label>
-                                    <input type="text" name= "Addrese" t-att-value = "Addrese" id ="Addrese"
-                                    class = "form-control" required="required"/>
-                                </div>
-                                <div class ="form-group">
-                                    <label for = "password"  class= "control-label"> Password</label>
-                                    <input type="text" name= "password" t-att-value = "password" id ="password"
-                                    class = "form-control" required="required"/>
-                                </div>
-                                <div class= "clearfix oe_login_buttons">
-                                    <button name="write_success" type="object" class = "btn btn-primary pull-left">Submit </button>
+</odoo>
 
-                                </div>
-                            </form>    
-                        </div>
+<!--<odoo>
+<template id="Create_User" name= "create User Registration">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <div class="container">
+                        <form role ="form"  action= "/api/register" method= "Post">
+                            <input type ="hidden" name= "csrf_token" t-att-value = "request.csrf_token()"/>
+                            <div class ="form-group">
+                                <label for = "email_id"  class= "control-label"> Email</label>
+                                <input type="email" name= "email_id" t-att-value = "email_id" id ="email_id"
+                                class = "form-control" required="required"/>
+                            </div>
+                            <div class ="form-group">
+                                <label for = "mobile_number"  class= "control-label"> Mobile Number</label>
+                                <input type="text" name= "mobile_number" t-att-value = "mobile_number" id ="mobile_number"
+                                class = "form-control" required="required"/>
+                            </div>
+                            <div class ="form-group">
+                                <label for = "Addrese"  class= "control-label"> Addrese</label>
+                                <input type="text" name= "Addrese" t-att-value = "Addrese" id ="Addrese"
+                                class = "form-control" required="required"/>
+                            </div>
+                            <div class ="form-group">
+                                <label for = "password"  class= "control-label"> Password</label>
+                                <input type="text" name= "password" t-att-value = "password" id ="password"
+                                class = "form-control" required="required"/>
+                            </div>
+                            <div class= "clearfix oe_login_buttons">
+                                
+                                <button string="Grant " name="action_grant_access" type="object" class="btn-secondary"
+                                attrs="{'invisible': ['|', ('is_portal', '=', True), ('is_internal', '=', True)]}">Submit </button>           
+                            </div>
+                        </form>    
                     </div>
                 </div>
-            </t>
-        
-        
-    </template>
+            </div>
+        </t>
+    
+    
+</template>
+
+
+
+  
+
+
 </odoo>
+
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <template id="create_user_page">
+    <form action="/create_user" method="post">
+      <input type="text" name="email" required="True" placeholder="Email"/>
+      <input type="text" name="password" required="True" placeholder="Password"/>
+      <input type="password" name="mobile" required="True" placeholder="Mobile"/>
+      <input type="text" name="addrese" placeholder="Addrese"/>
+      <button type="submit">Create User</button>
+    </form>
+  </template>
+
+  <template id="user_created_page">
+    <h1>User Created</h1>
+    <p>Email: <t t-esc="user.email"/></p>
+    <p>Password: <t t-esc="user.password"/></p>
+    <p> Addrese: <t t-esc="user.addrese"/></p>
+  </template>
+
+  <template id="error_page">
+    <h1>Error</h1>
+    <p><t t-esc="error_message"/></p>
+  </template>
+</odoo>
+-->

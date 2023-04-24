@@ -26,7 +26,12 @@ from odoo.http import Response
 from odoo.tools.misc import str2bool
 from odoo import http
 from odoo.http import request
-
+from odoo import http, _
+from odoo.http import request
+from odoo.exceptions import ValidationError
+import json
+from odoo import http
+from odoo.http import request
 _logger = logging.getLogger(__name__)
 
 REST_VERSION = {
@@ -216,7 +221,6 @@ class WebTokenAccess(http.Controller):
         else:
             abort(LOGIN_INVALID, status=401) 
 
-
 class UserController(http.Controller):
 
     
@@ -238,4 +242,6 @@ class UserController(http.Controller):
         })
         response_data = {'success': True, 'message': 'User registered successfully!'}
         return json.dumps(response_data)
+
+
 
